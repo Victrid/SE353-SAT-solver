@@ -10,4 +10,3 @@ target_link_libraries(tester
         pthread)
 
 gtest_discover_tests(tester WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
-add_test(NAME tester COMMAND tester WORKING_DIRECTORY ${PROJECT_SOURCE_DIR})
