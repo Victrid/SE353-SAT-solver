@@ -50,7 +50,7 @@ bool CNF::operator==(const CNF &other) const {
   return true;
 }
 
-#ifdef DEBUG
+#ifdef VERBOSE_DEBUG
 std::ostream &operator<<(std::ostream &os, const std::vector<bool> &v) {
   os << "[";
   for (auto ii : v) {
@@ -99,9 +99,13 @@ void CNF::print() const {
 #endif
 
 CNF::CNF(istream &input) {
-  string word;
-  if (!(input >> word) || word != "p" || !(input >> word) || word != "cnf" || !(input >> num_vars)
-      || !(input >> num_clauses)) {
+  string word, line;
+  do {
+    getline(input, line);
+  } while (line[0] == 'c');
+  istringstream iss(line);
+  if (!(iss >> word) || word != "p" || !(iss >> word) || word != "cnf" || !(iss >> num_vars)
+      || !(iss >> num_clauses)) {
     throw invalid_argument("Error: Input is in wrong format.");
   }
 
@@ -130,14 +134,13 @@ CNF::CNF(istream &input) {
   }
 }
 bool CNF::satisfied(const vector<bool> &assignment) const {
+#ifdef VERBOSE_DEBUG
+  print_case(assignment);
+#endif
   for (int i = 0; i < num_clauses; i++) {
     bool satisfied = false;
     for (int j = 0; j < num_vars; j++) {
-      if (pos_clauses[i][j] && assignment[j]) {
-        satisfied = true;
-        break;
-      }
-      if (neg_clauses[i][j] && !assignment[j]) {
+      if ((pos_clauses[i][j] && assignment[j]) || (neg_clauses[i][j] && !assignment[j])) {
         satisfied = true;
         break;
       }
@@ -147,9 +150,9 @@ bool CNF::satisfied(const vector<bool> &assignment) const {
   }
   return true;
 }
-void CNF::print_case(const vector<bool> &assignment) {
+void CNF::print_case(const vector<bool> &assignment) const {
   for (auto it : var_map) {
-    cout << (assignment[it.second] ? "+" : "-") << it.first << " ";
+    cout << (assignment[it.second] ? "" : "-") << it.first << " ";
   }
   cout << endl;
 }

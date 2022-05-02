@@ -1,7 +1,3 @@
-//
-// Created by victrid on 22-5-2.
-//
-
 #include "utils.h"
 #include <vector>
 
@@ -13,3 +9,4 @@ vector<bool> from_int(unsigned int n, unsigned int size) {
     res.push_back(n & (1 << i));
   return res;
 }
+
