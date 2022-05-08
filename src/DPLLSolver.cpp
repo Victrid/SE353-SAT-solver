@@ -54,7 +54,7 @@ void DPLLSolver::pure_literal_elimination(vector<map<unsigned int, bool>> &claus
         pure_literals[lit_val.first] = make_pair(true, lit_val.second);
       } else if (pure_literals[lit_val.first].second != lit_val.second)
         pure_literals[lit_val.first].first = false;
-    };
+    }
 
   for (auto &pure_literal : pure_literals) {
     if (!pure_literal.second.first)

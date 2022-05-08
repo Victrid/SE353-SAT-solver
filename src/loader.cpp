@@ -133,6 +133,7 @@ CNF::CNF(istream &input) {
     continue;
   }
 }
+
 bool CNF::satisfied(const vector<bool> &assignment) const {
 #ifdef VERBOSE_DEBUG
   print_case(assignment);
@@ -154,7 +155,27 @@ void CNF::print_case(const vector<bool> &assignment) const {
   for (auto it : var_map) {
     cout << (assignment[it.second] ? "" : "-") << it.first << " ";
   }
-  cout << endl;
+}
+bool CNF::satisfied(const vector<int> &assignment) const {
+  vector<bool> assignment_bool(num_vars, false);
+  if(assignment.size() != num_vars){
+#ifdef VERBOSE_DEBUG
+    cout << "Error: Assignment size is not correct" << endl;
+#endif
+    return false;
+  }
+
+  for (auto i: assignment) {
+    if(var_map.find(abs(i)) == var_map.end()){
+#ifdef VERBOSE_DEBUG
+      cout << "var_map: " << abs(i) << " not found" << endl;
+#endif
+      return false;
+    }
+
+    assignment_bool[var_map.at(abs(i))] = (i > 0);
+  }
+  return satisfied(assignment_bool);
 }
 
 

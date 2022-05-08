@@ -2,9 +2,13 @@ find_package(GTest REQUIRED)
 
 include_directories(${GTEST_INCLUDE_DIRS})
 set(src_dir ${CMAKE_CURRENT_SOURCE_DIR}/../src)
-add_executable(tester test_cnf_loader.cpp ${src_dir}/loader.cpp ${src_dir}/solvers.cpp
-        test_utils.cpp ${src_dir}/utils.cpp test_bf.cpp ${src_dir}/TracebackSolver.cpp
-        ${src_dir}/DPLLSolver.cpp test_dpll.cpp test_utils.h standard-benchmarks.cpp)
+
+file(GLOB SRC_FILES ${src_dir}/*.cpp)
+list(REMOVE_ITEM SRC_FILES ${src_dir}/cli.cpp)
+
+file(GLOB TEST_FILES ${CMAKE_CURRENT_SOURCE_DIR}/test_*)
+
+add_executable(tester ${SRC_FILES} ${TEST_FILES})
 
 target_link_libraries(tester
         ${GTEST_BOTH_LIBRARIES}

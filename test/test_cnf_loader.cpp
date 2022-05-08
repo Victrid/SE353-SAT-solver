@@ -6,7 +6,7 @@
 
 using namespace std;
 TEST(CnfLoader, detailed_input1) {
-  SKIP_IF_NOT_EXIST("test/cnf_examples/input1.cnf");
+  SKIP_IF_NOT_EXIST("test/cnf_examples/input1.cnf")
   CNF cnf(ifs);
   CNF expected(5, 5);
   expected.var_map[1] = 0;
@@ -29,7 +29,7 @@ TEST(CnfLoader, detailed_input1) {
 }
 
 TEST(CnfLoader, detailed_input2) {
-  SKIP_IF_NOT_EXIST("test/cnf_examples/input2.cnf");
+  SKIP_IF_NOT_EXIST("test/cnf_examples/input2.cnf")
   CNF cnf(ifs);
   CNF expected(3, 5);
   expected.var_map[1] = 0;
@@ -50,21 +50,21 @@ TEST(CnfLoader, detailed_input2) {
 }
 
 TEST(CnfLoader, can_load_input3) {
-  SKIP_IF_NOT_EXIST("test/cnf_examples/input3.cnf");
+  SKIP_IF_NOT_EXIST("test/cnf_examples/input3.cnf")
   CNF cnf(ifs);
 }
 
 TEST(CnfLoader, can_load_input4) {
-  SKIP_IF_NOT_EXIST("test/cnf_examples/input4.cnf");
+  SKIP_IF_NOT_EXIST("test/cnf_examples/input4.cnf")
   CNF cnf(ifs);
 }
 
 TEST(CnfLoader, not_complete) {
-  SKIP_IF_NOT_EXIST("test/cnf_examples/bad/not_complete.cnf");
+  SKIP_IF_NOT_EXIST("test/cnf_examples/bad/not_complete.cnf")
   EXPECT_ANY_THROW(CNF cnf(ifs));
 }
 
 TEST(CnfLoader, var_unbound) {
-  SKIP_IF_NOT_EXIST("test/cnf_examples/bad/var_unbound.cnf");
+  SKIP_IF_NOT_EXIST("test/cnf_examples/bad/var_unbound.cnf")
   EXPECT_ANY_THROW(CNF cnf(ifs));
 }

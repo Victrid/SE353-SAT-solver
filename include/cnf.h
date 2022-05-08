@@ -19,6 +19,7 @@ struct CNF {
   bool operator==(const CNF &other) const;
   void insert(const std::vector<int> &clause, int clause_count);
   [[nodiscard]] bool satisfied(const std::vector<bool> &assignment) const;
+  [[nodiscard]] bool satisfied(const std::vector<int> &assignment) const;
   void print_case(const std::vector<bool> &assignment) const;
 
 #ifdef VERBOSE_DEBUG

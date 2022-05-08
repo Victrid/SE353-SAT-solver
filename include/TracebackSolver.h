@@ -9,7 +9,7 @@ protected:
   std::pair<bool, std::vector<int>> solve(std::vector<std::map<unsigned int, bool>> &clauses, unsigned int var,
                                           bool value);
   virtual void modify(std::vector<std::map<unsigned int, bool>> &clauses, std::vector<int> &result);
-  std::pair<bool, unsigned int> choose_literal(const std::vector<std::map<unsigned int, bool>> &clauses);
+  static std::pair<bool, unsigned int> choose_literal(const std::vector<std::map<unsigned int, bool>> &clauses);
 public:
   std::pair<bool, std::vector<int>> solve(CNF &cnf);
 };

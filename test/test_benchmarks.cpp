@@ -34,8 +34,8 @@ TEST(suite, name) { \
   } \
 }
 
-TEST_BENCHMARK_SAT(BruteForce, uf20_91, "uf20-91", brute_force_searcher);
-TEST_BENCHMARK_SAT(DPLL, uf20_91, "uf20-91", DPLL_searcher);
+TEST_BENCHMARK_SAT(BruteForce, uf20_91, "uf20-91", brute_force_searcher)
+TEST_BENCHMARK_SAT(DPLL, uf20_91, "uf20-91", DPLL_searcher)
 
-TEST_BENCHMARK_SAT(DPLL, uf50_218, "uf50-218", DPLL_searcher);
-TEST_BENCHMARK_UNSAT(DPLL, uuf50_218, "uuf50-218", DPLL_searcher);
+TEST_BENCHMARK_SAT(DPLL, uf50_218, "uf50-218", DPLL_searcher)
+TEST_BENCHMARK_UNSAT(DPLL, uuf50_218, "uuf50-218", DPLL_searcher)
