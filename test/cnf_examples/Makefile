@@ -22,3 +22,6 @@ uuf50-218.tar.gz:
 uuf50-218: uuf50-218.tar.gz
 	mkdir uuf50-218
 	tar xf uuf50-218.tar.gz --strip-components=1 -C uuf50-218
+
+clean:
+	rm -rf uf20-91.tar.gz uf20-91 uf50-218.tar.gz uf50-218 uuf50-218.tar.gz uuf50-218
